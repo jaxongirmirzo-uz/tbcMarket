@@ -14,10 +14,14 @@ function Home() {
       </>
     );
   }
+  console.log(products);
 
   return (
     <>
       <h1>Home</h1>
+      <h1 className="ml-9 text-4xl">
+        Products : {products && products.products.length}
+      </h1>
 
       {products &&
         products.products.map((p) => {

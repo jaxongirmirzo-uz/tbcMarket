@@ -6,7 +6,6 @@ function SingleProduct() {
   const { data: product, isPending } = useFetch(
     "https://dummyjson.com/products/" + id
   );
-  console.log(product);
 
   if (isPending) {
     return (

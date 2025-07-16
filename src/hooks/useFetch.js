@@ -5,11 +5,20 @@ export function useFetch(url) {
 
   useEffect(() => {
     const getData = async () => {
-      setIsPending(true);
-      const req = await fetch(url);
-      const data = await req.json();
-      setIsPending(false);
-      setData(data);
+      try {
+        setIsPending(true);
+        const req = await fetch(url);
+        if (!req.ok) {
+          throw new Error("something went wrong");
+        }
+        const data = await req.json();
+        setIsPending(false);
+        setData(data);
+      } catch {
+        console.log("hatolik bor");
+      } finally {
+        setIsPending(false);
+      }
     };
     getData();
   }, [url]);
